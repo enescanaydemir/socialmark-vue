@@ -1,0 +1,18 @@
+{
+  "users": [
+    {
+      "username": "asdasd",
+      "fullname": "asdasd",
+      "password": "e8f162bedd3f4fa31fe094044fa48c6210c0446d",
+      "id": 1
+    },
+    {
+      "username": "canaydemir",
+      "fullname": "Enes Can Aydemir",
+      "password": "e8f162bedd3f4fa31fe094044fa48c6210c0446d",
+      "id": 2
+    }
+  ],
+  "bookmarks": [],
+  "categories": []
+}
