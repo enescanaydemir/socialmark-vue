@@ -32,6 +32,7 @@ export default {
           //Aşağıda yazdığımız kod aslında backend den gelir burada backend kullanmadan bu işlemi yaptık. Aynı vue-router ile yaptığımız router işlemleri gibi
           if (login_response?.data?.length > 0) { //kullanıcı girişi sonrası console dan bize geri dönen kullanıcı bilgilerini kullanarak bir şart oluşturduk. Eğer kullanıcı varsa data bize 1 yoksa 0 dönüyordu ve bunu değerlendirdik.
             this.$store.commit("setUser", login_response?.data[0]);
+            this.$router.push({ name: "HomePage" });
           } else {
             alert("Böyle bir kullanıcı bulunamadı...")
           }

@@ -9,7 +9,7 @@
         BookLike
       </div>
 
-      <div class="ml-auto flex items-center">
+      <div v-if="_isAuthenticated" class="ml-auto flex items-center">
         <router-link :to="{ name: 'NewBookMarkPage' }" class="flex bg-gray-700 hover:bg-black text-white px-3 py-1 rounded-sm text-sm items-center mr-2">
           <svg xmlns="http://www.w3.org/2000/svg" class="fill-current" height="16" viewBox="0 0 24 24" width="16">
             <path d="M0 0h24v24H0V0z" fill="none" />
@@ -56,3 +56,13 @@
     </nav>
   </div>
 </template>
+
+<script>
+import { mapGetters } from 'vuex';
+
+export default {
+  computed : {
+    ...mapGetters(["_isAuthenticated"])
+  }
+}
+</script>
