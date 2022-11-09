@@ -3,8 +3,14 @@ import { createStore } from "vuex";
 export default createStore({
   state: {
     user: null,
-    saltKey : "booklike123123!456?"
+    saltKey: "booklike123123!456?",
   },
+  mutations: {
+    setUser(state, user) {
+      state.user = user;
+    },
+  },
+
   getters: {
     _isAuthenticated: (state) => state.user !== null,
     _getCurrentUser(state) {
@@ -12,6 +18,6 @@ export default createStore({
       delete user?.password;
       return user;
     },
-    _saltKey : state => state.saltKey
+    _saltKey: (state) => state.saltKey,
   },
 });

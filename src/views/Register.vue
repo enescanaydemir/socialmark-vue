@@ -8,7 +8,7 @@
     <button class="default-button" @click="onSave">Kayıt ol</button>
     <span class="text-center mt-3 text-sm">
       Zaten Üyeyim,
-      <router-link :to="{ name: 'LoginPage' }" class="text-red-900 hover:text-black"> Giriş yap! </router-link>
+      <router-link :to="{ name: 'RegisterPage' }" class="text-red-900 hover:text-black"> Giriş yap! </router-link>
     </span>
   </div>
 </template>

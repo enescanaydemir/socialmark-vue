@@ -1,7 +1,6 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
   <div class="login_register_container">
-    {{ $store.getters._saltKey }}
     <h3 class="text-2xl text-center mb-3">Giriş Yap</h3>
     <input v-model="userData.username" type="text" placeholder="Kullanıcı Adı" class="input mb-3" />
     <input v-model="userData.password" type="password" placeholder="Şifre" class="input mb-3" />
@@ -27,10 +26,18 @@ export default {
   methods : {
     onSubmit(){
       const password = CryptoJS.HmacSHA1(this.userData.password, this.$store.getters._saltKey).toString();
-      this.$appAxios.get(`/db.json/users?username=${this.userData.username}&password=${password}`).then(login_response => {
+      this.$appAxios
+        .get(`http://localhost:3000/users?username=${this.userData.username}&password=${password}`)
+        .then(login_response => {
+          //Aşağıda yazdığımız kod aslında backend den gelir burada backend kullanmadan bu işlemi yaptık. Aynı vue-router ile yaptığımız router işlemleri gibi
+          if (login_response?.data?.length > 0) { //kullanıcı girişi sonrası console dan bize geri dönen kullanıcı bilgilerini kullanarak bir şart oluşturduk. Eğer kullanıcı varsa data bize 1 yoksa 0 dönüyordu ve bunu değerlendirdik.
+            this.$store.commit("setUser", login_response?.data[0]);
+          } else {
+            alert("Böyle bir kullanıcı bulunamadı...")
+          }
         console.log(login_response);
       })
-      .catch(e => console.log(e))
+      .catch(e => console.log(e));
       // // .finally(() => this.loader = false)
     }
   }
